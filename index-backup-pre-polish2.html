@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BilMedia — Your Fractional AI Executive</title>
+<meta name="description" content="BilMedia is your fractional AI executive. We scope, build, and run the AI agents that do your work — marketing, sales, finance, operations. One flat monthly fee, cancel anytime."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://bilmedia.com/"/>
+<meta property="og:title" content="BilMedia — Your Fractional AI Executive"/>
+<meta property="og:description" content="You don't hire a full-time AI team — you hire us. We scope, build, and run the agents that do your work."/>
+<meta property="og:url" content="https://bilmedia.com/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<!-- TODO at bilmedia.com DNS cutover: switch og:image, twitter:image, og:url and canonical to the bilmedia.com origin -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="BilMedia"/>
+<meta property="og:image" content="https://bilmedia.netlify.app/assets/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="BilMedia — AI Agents for Any Use Case"/>
+<meta name="twitter:image" content="https://bilmedia.netlify.app/assets/og-image.png"/>
+<meta name="theme-color" content="#0a0a0f"/>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BilMedia",
+  "url": "https://bilmedia.com",
+  "description": "AI growth partner agency building autonomous AI agents for business.",
+  "address": {"@type": "PostalAddress", "addressLocality": "Edmonton", "addressRegion": "Alberta", "addressCountry": "CA"},
+  "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "info@bilmedia.com"},
+  "sameAs": ["https://www.linkedin.com/company/bilmedia"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0f; color: #f0f0f5; line-height: 1.6; overflow-x: hidden; }
+  body::after { content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0a0a0f; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 18px 0; transition: 0.3s; }
+  .nav.scrolled { background: rgba(10,10,15,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .nav-logo { font-weight: 900; font-size: 1.4rem; letter-spacing: -1.5px; color: #f0f0f5; text-decoration: none; }
+  .nav-logo .dot { display: inline-block; width: 7px; height: 7px; background: linear-gradient(135deg, #00d4aa, #635bff); border-radius: 50%; margin-left: 2px; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { color: rgba(240,240,245,0.7); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.25s; }
+  .nav-links a:hover { color: #f0f0f5; }
+  .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; background: linear-gradient(135deg, #00d4aa, #635bff); color: #fff; font-weight: 700; font-size: 0.82rem; border-radius: 50px; text-decoration: none; transition: 0.3s; }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,212,170,0.25); }
+
+  /* HERO */
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 94px 0 52px; background: linear-gradient(180deg, #0f0f18 0%, #0a0a0f 100%); overflow: hidden; }
+  .hero-gradient { position: absolute; inset: -20%; z-index: 0; pointer-events: none; background: radial-gradient(ellipse at 20% 30%, rgba(0,212,170,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 40%, rgba(99,91,255,0.16) 0%, transparent 50%), radial-gradient(ellipse at 50% 85%, rgba(99,91,255,0.08) 0%, transparent 55%); animation: mesh-drift 22s ease-in-out infinite alternate; }
+  @keyframes mesh-drift { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(2.5%, -2%, 0) scale(1.06); } }
+  .hero-grid { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 42%, #000 0%, transparent 78%); mask-image: radial-gradient(ellipse 75% 60% at 50% 42%, #000 0%, transparent 78%); }
+  .hero h1 { position: relative; }
+  .hero-glow { position: absolute; left: 50%; top: 42%; width: 620px; height: 320px; transform: translate(-50%,-50%); z-index: 1; pointer-events: none; background: radial-gradient(ellipse, rgba(0,212,170,0.13) 0%, transparent 70%); filter: blur(28px); }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; text-align: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.2); border-radius: 50px; font-size: 0.78rem; font-weight: 600; color: #00d4aa; margin-bottom: 28px; }
+  .hero-badge .dot { width: 7px; height: 7px; background: #00d4aa; border-radius: 50%; box-shadow: 0 0 10px rgba(0,212,170,0.5); }
+  .hero h1 { font-size: clamp(2.7rem, 5.4vw, 4.6rem); font-weight: 900; line-height: 1.04; letter-spacing: -2px; margin-bottom: 18px; background: linear-gradient(135deg, #ffffff 0%, #00d4aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-tagline { font-size: 1.16rem; color: #00d4aa; font-weight: 600; margin-bottom: 14px; max-width: 660px; margin-left: auto; margin-right: auto; }
+  .hero-desc { font-size: 1.05rem; color: #8a8aa0; max-width: 560px; line-height: 1.7; margin: 0 auto 24px; }
+  .hero-cta-group { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 0; }
+  .hero-trust { display: inline-flex; align-items: center; justify-content: center; gap: 9px; margin-top: 20px; font-size: 0.82rem; color: #8a8aa0; line-height: 1.5; }
+  .hero-trust svg { width: 14px; height: 14px; stroke: #00d4aa; fill: none; stroke-width: 2.2; flex-shrink: 0; }
+  .hero-trust strong { color: #c4c4d2; font-weight: 600; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; font-family: inherit; }
+  .btn-primary { background: linear-gradient(135deg, #00d4aa, #635bff); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(0,212,170,0.3); }
+  .btn-ghost { background: rgba(255,255,255,0.04); color: #f0f0f5; border: 1px solid rgba(255,255,255,0.1); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .btn .arrow { transition: 0.3s; }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 26px; padding: 26px 18px; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; backdrop-filter: blur(18px); box-shadow: 0 18px 50px rgba(0,0,0,0.32); }
+  .hero-stat { position: relative; padding: 0 10px; }
+  .hero-stat + .hero-stat::before { content: ''; position: absolute; left: 0; top: 12%; height: 76%; width: 1px; background: rgba(255,255,255,0.09); }
+  .hero-stat .stat-num { font-size: 1.75rem; font-weight: 800; letter-spacing: -1px; color: #ffffff; }
+  .hero-stat .stat-label { font-size: 0.76rem; color: #8a8aa0; margin-top: 4px; line-height: 1.35; }
+
+  /* SECTIONS */
+  .section { padding: 140px 0; }
+  .section-light { background: linear-gradient(180deg, #fafafc 0%, #f0f0f5 100%); color: #1a1a2e; }
+  .section-light .section-title { color: #1a1a2e; }
+  .section-light .section-subtitle { color: #5a5a6c; }
+  .section-light .section-label { color: #00d4aa; }
+  .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #00d4aa; margin-bottom: 14px; }
+  .section-title { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: #f0f0f5; margin-bottom: 14px; }
+  .section-subtitle { font-size: 1.05rem; color: #7a7a8c; max-width: 520px; line-height: 1.7; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-header .section-subtitle { margin: 0 auto; }
+
+  /* LOGO MARQUEE */
+  .logo-marquee { padding: 46px 0 40px; background: linear-gradient(180deg, #ffffff 0%, #f3f3f7 100%); border-top: 1px solid rgba(0,0,0,0.06); border-bottom: 1px solid rgba(0,0,0,0.06); overflow: hidden; }
+  .marquee-viewport { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%); }
+  .marquee-track { display: flex; align-items: center; gap: clamp(48px, 6vw, 88px); width: max-content; animation: marquee-scroll 38s linear infinite; will-change: transform; }
+  .marquee-viewport:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .logo-item { display: inline-flex; align-items: center; flex-shrink: 0; }
+  .logo-item img { width: auto; display: block; opacity: 0.9; transition: opacity 0.3s ease; }
+  .logo-item:hover img { opacity: 1; }
+  /* per-logo optical sizing */
+  .logo-item img.lg-anthropic   { height: 17px; }
+  .logo-item img.lg-openai      { height: 21px; }
+  .logo-item img.lg-lovable     { height: 24px; }
+  .logo-item img.lg-ringcentral { height: 19px; }
+  .logo-item img.lg-autodesk    { height: 17px; }
+  .logo-wordmark { display: inline-flex; align-items: center; gap: 8px; color: #1a1a2e; font-size: 1.02rem; font-weight: 700; letter-spacing: -0.4px; white-space: nowrap; }
+  .badge-panel { max-width: 1000px; margin: 34px auto 0; padding: 0 20px; }
+  .badge-panel img { width: 100%; height: auto; display: block; }
+
+  /* GLASS */
+  .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; transition: 0.3s; }
+  .glass:hover { border-color: rgba(0,212,170,0.2); transform: translateY(-4px); box-shadow: 0 12px 50px rgba(0,0,0,0.4); }
+  .glass-light { background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 20px; transition: 0.3s; }
+  .glass-light:hover { border-color: rgba(0,212,170,0.3); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .service-card { padding: 32px 28px; }
+  .service-card h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; }
+  .service-card p { font-size: 0.88rem; color: #8a8aa0; line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 14px; padding: 4px 10px; background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.15); border-radius: 50px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: #00d4aa; }
+  .service-icon {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, rgba(0,212,170,0.15), rgba(99,91,255,0.1));
+    border: 1px solid rgba(0,212,170,0.2);
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+  .service-icon svg { width: 20px; height: 20px; stroke: #00d4aa; fill: none; stroke-width: 2; }
+
+  /* HOW IT WORKS */
+  .how-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .how-step { text-align: center; padding: 40px 28px; }
+  .step-num { font-family: 'JetBrains Mono', monospace; font-size: 2.8rem; font-weight: 700; letter-spacing: -3px; margin-bottom: 14px; background: linear-gradient(135deg, #00b894 0%, #635bff 145%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .how-loop { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 34px; font-size: 0.92rem; font-weight: 600; color: #00806d; }
+  .how-loop svg { width: 17px; height: 17px; stroke: #00806d; fill: none; stroke-width: 2.2; }
+  .step-time { display: inline-block; margin-bottom: 10px; padding: 3px 11px; border-radius: 50px; background: rgba(0,184,148,0.10); border: 1px solid rgba(0,184,148,0.22); font-size: 0.66rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #00806d; }
+  .how-step h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; }
+  .how-step p { font-size: 0.85rem; color: #8a8aa0; line-height: 1.6; }
+
+  /* INDUSTRIES */
+  .industries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+  .industry-card { padding: 28px 18px; text-align: center; }
+  .industry-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+  .industry-card p { font-size: 0.75rem; color: #8a8aa0; }
+
+  /* CASE STUDIES */
+  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+  .case-card { padding: 36px 32px; }
+  .case-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .case-industry { font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #00d4aa; }
+  .case-result { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+  .case-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+  .case-card p { font-size: 0.85rem; color: #8a8aa0; line-height: 1.65; }
+  .case-metric { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #8a8aa0; }
+  .case-viz { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.07); }
+  .viz-title { font-size: 0.66rem; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; color: #8a8a9c; margin-bottom: 10px; }
+  .viz-row { display: grid; grid-template-columns: 44px 1fr 58px; align-items: center; gap: 10px; margin-bottom: 7px; }
+  .viz-row:last-child { margin-bottom: 0; }
+  .viz-label { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #9a9aa8; }
+  .viz-bar { height: 9px; border-radius: 50px; background: rgba(0,0,0,0.06); overflow: hidden; }
+  .viz-fill { display: block; height: 100%; border-radius: 50px; }
+  .viz-before { background: #cfcfd8; }
+  .viz-after { background: linear-gradient(90deg, #00b894, #635bff); }
+  .viz-val { font-size: 0.76rem; font-weight: 700; color: #1a1a2e; text-align: right; }
+  .case-metric strong { color: #f0f0f5; font-weight: 700; }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; max-width: 880px; margin: 0 auto; }
+  .pricing-card { padding: 36px 28px; text-align: center; position: relative; }
+  .pricing-card.featured { border-color: rgba(0,212,170,0.25); background: rgba(0,212,170,0.03); }
+  .pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 14px; background: linear-gradient(135deg, #00d4aa, #635bff); color: #fff; font-size: 0.66rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border-radius: 50px; }
+  .pricing-type { font-size: 0.74rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a7a8c; margin-bottom: 12px; }
+  .pricing-amount { font-size: 2.6rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 2px; }
+  .pricing-period { font-size: 0.84rem; color: #8a8aa0; margin-bottom: 22px; }
+  .pricing-features { list-style: none; text-align: left; margin-bottom: 26px; }
+  .pricing-features li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.84rem; color: #8a8aa0; display: flex; align-items: center; gap: 10px; }
+  .pricing-features li:last-child { border-bottom: none; }
+  .pricing-features li svg { width: 16px; height: 16px; stroke: #00d4aa; fill: none; stroke-width: 2.5; flex-shrink: 0; }
+  .pricing-card .btn { width: 100%; justify-content: center; }
+
+  /* OWNERSHIP COMPARISON */
+  .own-wrap { max-width: 900px; margin: 60px auto 0; }
+  .own-head { text-align: center; margin-bottom: 30px; }
+  .own-head h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 800; letter-spacing: -0.8px; margin-bottom: 8px; }
+  .own-head p { font-size: 0.95rem; color: #8a8aa0; line-height: 1.7; max-width: 620px; margin: 0 auto; }
+  .own-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .own-col { padding: 26px 24px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); }
+  .own-col.own-us { border-color: rgba(0,212,170,0.28); background: rgba(0,212,170,0.04); }
+  .own-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: #7a7a8c; margin-bottom: 18px; }
+  .own-col.own-us h4 { color: #00d4aa; }
+  .own-col ul { list-style: none; display: grid; gap: 13px; }
+  .own-col li { display: grid; grid-template-columns: 17px 1fr; gap: 11px; font-size: 0.9rem; line-height: 1.6; color: #8a8aa0; }
+  .own-col svg { width: 15px; height: 15px; fill: none; stroke-width: 2.4; margin-top: 3px; }
+  .own-them svg { stroke: #6a6a7c; }
+  .own-us svg { stroke: #00d4aa; }
+  .own-us li { color: #c4c4d2; }
+  .own-us li strong { color: #f0f0f5; font-weight: 700; }
+  @media (max-width: 700px) { .own-compare { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq-section { padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .faq-grid { max-width: 640px; margin: 32px auto 0; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; }
+  .faq-question { width: 100%; padding: 18px 24px; background: none; border: none; color: #f0f0f5; font-size: 0.92rem; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: 0.25s; }
+  .faq-question:hover { background: rgba(255,255,255,0.03); }
+  .faq-arrow { transition: 0.3s; font-size: 1.2rem; color: #7a7a8c; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+  .faq-item.open .faq-answer { max-height: 200px; }
+  .faq-answer-inner { padding: 0 24px 18px; font-size: 0.86rem; color: #8a8aa0; line-height: 1.65; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .testimonial-card { padding: 36px 32px; }
+  .testimonial-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+  .testimonial-stars svg { width: 16px; height: 16px; fill: #f59e0b; }
+  .testimonial-text { font-size: 0.92rem; line-height: 1.7; margin-bottom: 18px; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #00d4aa, #635bff); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; color: #fff; }
+  .testimonial-info .name { font-weight: 700; font-size: 0.88rem; }
+  .testimonial-info .role { font-size: 0.76rem; color: #7a7a8c; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; margin-bottom: 18px; }
+  .about-content p { font-size: 1rem; color: #8a8aa0; line-height: 1.75; margin-bottom: 12px; }
+
+  /* DASHBOARD */
+  .dashboard-mockup { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .dashboard-header { padding: 14px 18px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+  .dashboard-dots { display: flex; gap: 6px; }
+  .dashboard-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .dashboard-dots span:nth-child(1) { background: #ff5f57; }
+  .dashboard-dots span:nth-child(2) { background: #ffbd2e; }
+  .dashboard-dots span:nth-child(3) { background: #28c840; }
+  .dashboard-title { font-size: 0.78rem; color: #7a7a8c; font-weight: 600; }
+  .dashboard-body { display: flex; min-height: 240px; }
+  .dashboard-sidebar { width: 100px; padding: 16px 12px; border-right: 1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.2); }
+  .sidebar-item { padding: 8px 10px; font-size: 0.72rem; color: #7a7a8c; border-radius: 6px; margin-bottom: 4px; }
+  .sidebar-item.active { background: rgba(0,212,170,0.15); color: #00d4aa; font-weight: 600; }
+  .dashboard-main { flex: 1; padding: 18px; }
+  .metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+  .metric-card { padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; }
+  .metric-label { font-size: 0.65rem; color: #7a7a8c; margin-bottom: 4px; }
+  .metric-value { font-size: 1.1rem; font-weight: 700; color: #f0f0f5; }
+  .metric-change { font-size: 0.65rem; font-weight: 600; }
+  .metric-change.positive { color: #00d4aa; }
+  .chart-area { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; height: 100px; display: flex; align-items: flex-end; }
+  .chart-bars { display: flex; gap: 8px; align-items: flex-end; width: 100%; height: 100%; }
+  .bar { flex: 1; background: linear-gradient(180deg, #00d4aa, rgba(0,212,170,0.2)); border-radius: 4px 4px 0 0; min-height: 20%; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 960px; margin: 0 auto; }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 14px; padding: 22px; }
+  .contact-item:hover { border-color: rgba(0,212,170,0.2); }
+  .contact-item-icon { width: 42px; height: 42px; flex-shrink: 0; background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .contact-item-icon svg { width: 18px; height: 18px; stroke: #00d4aa; fill: none; stroke-width: 2; }
+  .contact-item h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 3px; }
+  .contact-item p, .contact-item a { font-size: 0.84rem; color: #8a8aa0; text-decoration: none; transition: 0.25s; }
+  .contact-item a:hover { color: #f0f0f5; }
+  .contact-form { padding: 36px 32px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.78rem; font-weight: 600; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; color: #f0f0f5; font-family: inherit; font-size: 0.84rem; transition: 0.25s; outline: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: rgba(0,212,170,0.3); box-shadow: 0 0 0 3px rgba(0,212,170,0.08); }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+  .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a7a8c' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  .form-group select option { background: #141418; color: #f0f0f5; }
+  .contact-form .btn { width: 100%; justify-content: center; font-size: 0.9rem; padding: 15px 26px; }
+
+  /* FOOTER */
+  .footer { padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .footer-brand p { font-size: 0.84rem; color: #7a7a8c; line-height: 1.7; margin: 12px 0 18px; max-width: 280px; }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; transition: 0.25s; }
+  .footer-social a:hover { border-color: rgba(0,212,170,0.2); background: rgba(0,212,170,0.05); }
+  .footer-social a svg { width: 16px; height: 16px; fill: #7a7a8c; }
+  .footer-col h4 { font-size: 0.76rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 7px; }
+  .footer-col ul a { font-size: 0.84rem; color: #7a7a8c; text-decoration: none; transition: 0.25s; }
+  .footer-col ul a:hover { color: #f0f0f5; }
+  .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; font-size: 0.76rem; color: #7a7a8c; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* LIGHT-SECTION OVERRIDES (fix #2, #3) */
+  .section-light .case-metric { border-top-color: rgba(0,0,0,0.08); color: #5a5a6c; }
+  .section-light .case-metric strong { color: #1a1a2e; }
+  .section-light .case-card p,
+  .section-light .how-step p,
+  .section-light .testimonial-text { color: #4a4a5c; }
+  .section-light .section-subtitle { color: #4a4a5c; }
+  .section-light .testimonial-info .role { color: #5a5a6c; }
+  .section-light .section-label { color: #00806d; }
+  .section-light .form-group label { color: #1a1a2e; }
+  .section-light .form-group input,
+  .section-light .form-group textarea,
+  .section-light .form-group select {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.14);
+    color: #1a1a2e;
+  }
+  .section-light .form-group input::placeholder,
+  .section-light .form-group textarea::placeholder { color: #8a8a9c; }
+  .section-light .form-group input:focus,
+  .section-light .form-group textarea:focus,
+  .section-light .form-group select:focus {
+    border-color: #00a88c;
+    box-shadow: 0 0 0 3px rgba(0,168,140,0.15);
+  }
+  .section-light .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a5a6c' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+  .section-light .form-group select option { background: #ffffff; color: #1a1a2e; }
+  .section-light .contact-item p, .section-light .contact-item a { color: #5a5a6c; }
+
+  /* FORM STATUS (fix #1) */
+  .form-status { margin-top: 14px; font-size: 0.84rem; line-height: 1.6; min-height: 1px; }
+  .form-status.success { color: #00806d; font-weight: 600; }
+  .form-status.error { color: #c0392b; font-weight: 600; }
+  .form-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  /* MOBILE NAV (fix #4) */
+  .nav-toggle { display: none; width: 42px; height: 42px; padding: 0; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.25s; }
+  .nav-toggle:hover { background: rgba(255,255,255,0.08); }
+  .nav-toggle span { display: block; width: 17px; height: 2px; background: #f0f0f5; border-radius: 2px; transition: transform 0.3s ease, opacity 0.2s ease; }
+  .nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { display: none; flex-direction: column; gap: 2px; max-width: 1100px; margin: 0 auto; padding: 14px 24px 6px; }
+  .nav.menu-open .mobile-menu { display: flex; }
+  .nav.menu-open { background: rgba(10,10,15,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mobile-menu a { padding: 13px 4px; color: rgba(240,240,245,0.8); text-decoration: none; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu .mobile-menu-cta { margin-top: 12px; padding: 14px 22px; text-align: center; background: linear-gradient(135deg, #00d4aa, #635bff); color: #fff; font-weight: 700; border-radius: 50px; border-bottom: none; }
+
+  /* OVERFLOW GUARDS (fix #5) */
+  html { overflow-x: hidden; }
+  .about-grid > *, .contact-grid > * { min-width: 0; }
+  .dashboard-main, .dashboard-body { min-width: 0; }
+  .dashboard-mockup { max-width: 100%; }
+
+
+  /* MECHANISM */
+  .mech-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .mech-step { display: grid; grid-template-columns: 34px 1fr; gap: 16px; margin-bottom: 26px; }
+  .mech-step:last-child { margin-bottom: 0; }
+  .mech-num { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(0,212,170,0.12); border: 1px solid rgba(0,212,170,0.28); color: #00d4aa; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; }
+  .mech-step h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 5px; }
+  .mech-step p { font-size: 0.9rem; color: #8a8aa0; line-height: 1.65; }
+  .mech-note { margin-top: 30px; padding: 16px 18px; border-radius: 14px; background: rgba(0,212,170,0.05); border: 1px solid rgba(0,212,170,0.16); font-size: 0.88rem; color: #b9b9c8; line-height: 1.6; }
+  .mech-note strong { color: #00d4aa; font-weight: 700; }
+  .mech-note p { margin-bottom: 16px; }
+  .mech-cta { font-size: 0.86rem; padding: 12px 22px; }
+
+  /* AGENT ACTIVITY PANEL */
+  .agent-panel { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .agent-head { padding: 13px 18px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+  .agent-head .dashboard-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .agent-title { font-size: 0.78rem; color: #7a7a8c; font-weight: 600; }
+  .agent-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; padding: 13px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .agent-row:last-child { border-bottom: none; }
+  .agent-task { font-size: 0.85rem; color: #d4d4de; }
+  .agent-task span { display: block; font-size: 0.72rem; color: #7a7a8c; margin-top: 2px; }
+  .agent-status { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 11px; border-radius: 50px; white-space: nowrap; }
+  .st-run { background: rgba(0,212,170,0.12); border: 1px solid rgba(0,212,170,0.3); color: #00d4aa; }
+  .st-done { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #9a9aac; }
+  .st-esc { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #f59e0b; }
+  .agent-foot { padding: 12px 18px; background: rgba(0,0,0,0.2); font-size: 0.72rem; color: #7a7a8c; text-align: center; }
+
+  /* IMPROVEMENT BLOCK */
+  .improve-block { max-width: 780px; margin: 52px auto 0; padding: 30px 34px; background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 20px; }
+  .improve-block h3 { font-size: 1.24rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; color: #1a1a2e; }
+  .improve-block > p { font-size: 0.94rem; color: #4a4a5c; line-height: 1.7; margin-bottom: 20px; }
+  .improve-list { list-style: none; display: grid; gap: 11px; }
+  .improve-list li { display: grid; grid-template-columns: 18px 1fr; gap: 11px; font-size: 0.9rem; color: #4a4a5c; line-height: 1.6; }
+  .improve-list svg { width: 16px; height: 16px; stroke: #00806d; fill: none; stroke-width: 2.4; margin-top: 3px; }
+  .improve-list strong { color: #1a1a2e; font-weight: 700; }
+
+  @media (max-width: 900px) {
+    .mech-grid { grid-template-columns: 1fr; gap: 40px; }
+    .improve-block { padding: 24px 22px; }
+  }
+
+  /* GRID BALANCE — no orphan rows */
+  @media (min-width: 1000px) {
+    .services-grid { grid-template-columns: repeat(4, 1fr); }
+    .service-card { padding: 26px 22px; }
+    .cases-grid { grid-template-columns: repeat(3, 1fr); }
+    .cases-grid .case-card:last-child { grid-column: 1 / -1; }
+    .cases-grid .case-card:last-child p { max-width: 64ch; }
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .marquee-track { animation: none !important; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.6rem; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 22px 8px; }
+    .hero-stat:nth-child(3)::before { display: none; }
+    .section { padding: 80px 0; }
+    .logo-row { gap: 24px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.2rem; letter-spacing: -1.5px; }
+    .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr; }
+    .industries-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { padding: 20px 10px; }
+    .hero-stat .stat-num { font-size: 1.45rem; }
+    .hero-stat .stat-label { font-size: 0.7rem; }
+    .marquee-track { gap: 40px; }
+    .logo-item img.lg-anthropic, .logo-item img.lg-autodesk { height: 14px; }
+    .logo-item img.lg-openai, .logo-item img.lg-ringcentral { height: 16px; }
+    .logo-item img.lg-lovable { height: 19px; }
+    .logo-wordmark { font-size: 0.9rem; }
+    .badge-panel { margin-top: 32px; padding: 12px 14px; border-radius: 12px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .dashboard-sidebar { width: 78px; padding: 12px 8px; }
+    .sidebar-item { font-size: 0.66rem; padding: 7px 6px; }
+    .dashboard-main { padding: 12px; }
+    .metric-row { grid-template-columns: 1fr 1fr; }
+    .metric-row .metric-card:last-child { grid-column: 1 / -1; }
+  }
+</style>
+<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">BilMedia<span class="dot"></span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#cases">Results</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Call <span>→</span></a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#cases">Results</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="mobile-menu-cta">Book a Call →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="hero-badge"><span class="dot"></span> Fractional AI Executive &middot; Edmonton, Alberta</div>
+      <h1>Your Fractional AI Executive.</h1>
+      <p class="hero-tagline">Marketing. Sales. Finance. Operations.</p>
+      <p class="hero-desc">You don't hire a full-time AI team — you hire us. We scope, build, and run the agents that do your work, for one flat monthly fee.</p>
+      <div class="hero-cta-group">
+        <a href="#contact" class="btn btn-primary">Book Strategy Call <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#mechanism" class="btn btn-ghost">Get a Free Process Map</a>
+      </div>
+      <p class="hero-trust"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span><strong>You own everything we build</strong> — your repo, your accounts, your keys.</span></p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="stat-num" data-counter="100" data-prefix="$" data-suffix="K+">0</div><div class="stat-label">Client revenue generated</div></div>
+        <div class="hero-stat"><div class="stat-num" data-counter="350" data-prefix="$" data-suffix="K+">0</div><div class="stat-label">Client costs saved &amp; recovered</div></div>
+        <div class="hero-stat"><div class="stat-num" data-counter="30" data-suffix="%">0</div><div class="stat-label">Fewer admin hours</div></div>
+        <div class="hero-stat"><div class="stat-num" data-counter="5" data-suffix="X">0</div><div class="stat-label">Average ROAS</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO MARQUEE -->
+<div class="logo-marquee">
+  <div class="container">
+    <div class="marquee-viewport">
+      <div class="marquee-track">
+        <div class="logo-item"><img class="lg-anthropic" src="assets/anthropic.svg" alt="Anthropic" width="160" height="17"/></div>
+        <div class="logo-item"><img class="lg-openai" src="assets/openai.svg" alt="OpenAI" width="78" height="21"/></div>
+        <div class="logo-item"><span class="logo-wordmark"><img class="lg-lovable" src="assets/lovable.svg" alt="" aria-hidden="true" width="23" height="24"/>Lovable</span></div>
+        <div class="logo-item"><span class="logo-wordmark">JobBOSS</span></div>
+        <div class="logo-item"><img class="lg-ringcentral" src="assets/ringcentral.svg" alt="RingCentral" width="126" height="19"/></div>
+        <div class="logo-item"><img class="lg-autodesk" src="assets/autodesk.svg" alt="Autodesk" width="118" height="17"/></div>
+        <div class="logo-item"><img class="lg-anthropic" src="assets/anthropic.svg" alt="" aria-hidden="true" width="160" height="17"/></div>
+        <div class="logo-item"><img class="lg-openai" src="assets/openai.svg" alt="" aria-hidden="true" width="78" height="21"/></div>
+        <div class="logo-item"><span class="logo-wordmark"><img class="lg-lovable" src="assets/lovable.svg" alt="" aria-hidden="true" width="23" height="24"/>Lovable</span></div>
+        <div class="logo-item"><span class="logo-wordmark">JobBOSS</span></div>
+        <div class="logo-item"><img class="lg-ringcentral" src="assets/ringcentral.svg" alt="" aria-hidden="true" width="126" height="19"/></div>
+        <div class="logo-item"><img class="lg-autodesk" src="assets/autodesk.svg" alt="" aria-hidden="true" width="118" height="17"/></div>
+      </div>
+    </div>
+    <div class="badge-panel">
+      <img src="assets/badges.png" alt="TikTok for Business Strategic Agency 2023, Clutch Global Spring 2024, Top Digital Marketing 2024, PR Daily Content Marketing Awards 2024, LinkedIn Certified Marketing Partner, Google Partner Premier 2024, Microsoft Advertising Partner 2024, HubSpot Platinum Certified Agency Partner" loading="lazy" width="1400" height="114"/>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <div class="section-label">About Us</div>
+        <h2>Digital Marketers Who Learned to Build the Future</h2>
+        <p>We've spent years running paid ads, SEO, social media, and B2B lead generation for companies across North America. We know what works — and what doesn't.</p>
+        <p>Now we're combining that hard-won marketing expertise with cutting-edge AI agent development. We don't just tell you what to do — we build the agents that do it for you.</p>
+        <p>Based in Edmonton, Alberta. Serving clients across Canada and the US. Month-to-month. No BS.</p>
+      </div>
+      <div class="about-visual reveal">
+        <div class="dashboard-mockup">
+          <div class="dashboard-header">
+            <div class="dashboard-dots"><span></span><span></span><span></span></div>
+            <div class="dashboard-title">BilMedia Agent Dashboard</div>
+          </div>
+          <div class="dashboard-body">
+            <div class="dashboard-sidebar">
+              <div class="sidebar-item active">Overview</div>
+              <div class="sidebar-item">Marketing</div>
+              <div class="sidebar-item">Sales</div>
+              <div class="sidebar-item">Finance</div>
+              <div class="sidebar-item">Operations</div>
+            </div>
+            <div class="dashboard-main">
+              <div class="metric-row">
+                <div class="metric-card"><div class="metric-label">Revenue</div><div class="metric-value">$124K</div><div class="metric-change positive">+24%</div></div>
+                <div class="metric-card"><div class="metric-label">Pipeline</div><div class="metric-value">$840K</div><div class="metric-change positive">+18%</div></div>
+                <div class="metric-card"><div class="metric-label">ROAS</div><div class="metric-value">5.2X</div><div class="metric-change positive">+0.8</div></div>
+              </div>
+              <div class="chart-area">
+                <div class="chart-bars">
+                  <div class="bar" style="height: 40%"></div>
+                  <div class="bar" style="height: 60%"></div>
+                  <div class="bar" style="height: 45%"></div>
+                  <div class="bar" style="height: 75%"></div>
+                  <div class="bar" style="height: 55%"></div>
+                  <div class="bar" style="height: 85%"></div>
+                  <div class="bar" style="height: 70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Agents That Do the Work</h2>
+      <p class="section-subtitle">Four departments, one approach — autonomous agents that own a process end to end: reading, deciding, acting, and reporting without a human in the loop.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card glass reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>AI Marketing Agents</h3>
+        <p>Autonomous agents that manage paid ads, SEO, content, and social — learning and optimizing in real time.</p>
+        <span class="service-tag">Autonomous</span>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>AI Sales Agents</h3>
+        <p>Outbound agents running personalized cold email, LinkedIn outreach, and lead qualification on autopilot.</p>
+        <span class="service-tag">Revenue</span>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>AI Finance Agents</h3>
+        <p>Automate reconciliation, reporting, AP/AR, and financial forecasting with AI that understands your books.</p>
+        <span class="service-tag">Profit</span>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+        <h3>Operations Automation</h3>
+        <p>Project management, customer support, HR workflows, and internal processes — handled by agents.</p>
+        <span class="service-tag">Efficiency</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section class="section" id="mechanism">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">How It Learns</div>
+      <h2 class="section-title">Show Us the Job Once.</h2>
+      <p class="section-subtitle">No process documentation to write. No system to learn. You do the work the way you already do it — we handle everything after that.</p>
+    </div>
+    <div class="mech-grid">
+      <div class="reveal">
+        <div class="mech-step">
+          <div class="mech-num">01</div>
+          <div><h3>You do the job once, while we watch</h3><p>Record your screen, or walk us through it on a call. Every step, every decision, and every exception you make along the way — including the ones nobody wrote down.</p></div>
+        </div>
+        <div class="mech-step">
+          <div class="mech-num">02</div>
+          <div><h3>We map it and put a number on it</h3><p>You get the process back as a visual map — decisions, branches, edge cases — along with what it costs you today in hours and salary. The map is yours to keep whether or not you hire us.</p></div>
+        </div>
+        <div class="mech-step">
+          <div class="mech-num">03</div>
+          <div><h3>The agent takes the job over</h3><p>It reads the documents, makes the calls the process calls for, updates your systems, and escalates anything it shouldn't decide alone. Running on your accounts, in your repo.</p></div>
+        </div>
+        <div class="mech-note"><p><strong>The map is free.</strong> Show us one process and we'll map it and price it — no charge, no obligation. Most owners are surprised what a single workflow costs them a year.</p>
+          <a href="#contact" class="btn btn-primary mech-cta">Get My Free Process Map <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </div>
+      <div class="reveal">
+        <div class="agent-panel">
+          <div class="agent-head">
+            <div class="dashboard-dots"><span></span><span></span><span></span></div>
+            <div class="agent-title">Agent activity</div>
+          </div>
+          <div class="agent-row"><div class="agent-task">Invoice reconciliation<span>142 invoices matched to POs</span></div><div class="agent-status st-run">Running</div></div>
+          <div class="agent-row"><div class="agent-task">Lead enrichment &amp; routing<span>Assigned to the right rep</span></div><div class="agent-status st-done">Done</div></div>
+          <div class="agent-row"><div class="agent-task">Contract renewal review<span>Two clauses outside policy</span></div><div class="agent-status st-esc">Escalated</div></div>
+          <div class="agent-row"><div class="agent-task">Weekly margin report<span>Sent to finance 6:00am</span></div><div class="agent-status st-done">Done</div></div>
+          <div class="agent-foot">Illustrative — agents escalate what they shouldn't decide alone</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-light" id="how">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Map. Build. Run. Improve.</h2>
+      <p class="section-subtitle">Not a project with an end date — a loop that runs every month. Most shops stop at step two and hand you the keys. Steps three and four are the job.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step glass-light reveal"><div class="step-num">01</div><div class="step-time">Week 1</div><h3>Map</h3><p>We map your processes and put a dollar figure on each one — what it costs you today in hours and salary. You keep the map either way.</p></div>
+      <div class="how-step glass-light reveal"><div class="step-num">02</div><div class="step-time">Weeks 2–4</div><h3>Build</h3><p>We build the agent that owns your highest-value process end to end: reading, deciding, acting, reporting. It ships into your repo, on your accounts.</p></div>
+      <div class="how-step glass-light reveal"><div class="step-num">03</div><div class="step-time">Ongoing</div><h3>Run</h3><p>It goes live and we operate it. Monitoring, exception handling, fixes when an API changes underneath it. This is the part a one-time build doesn't include.</p></div>
+      <div class="how-step glass-light reveal"><div class="step-num">04</div><div class="step-time">Every month</div><h3>Improve</h3><p>We tune what's live and build the next agent. Month one you have an agent. Month six you have a department.</p></div>
+    </div>
+    <p class="how-loop"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Then it repeats — every month, back to the map.</p>
+    <div class="improve-block reveal">
+      <h3>Every agent owns a number.</h3>
+      <p>An agent that nobody is accountable for quietly drifts. So each one we run is tied to a metric — cost per run, hours returned, days to close — and that number is ours until it's where it should be.</p>
+      <ul class="improve-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>One change at a time.</strong> We measure before and after, so we know which change moved the number and which one didn't.</span></li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>What works gets kept.</strong> What doesn't gets replaced by the next thing we try. No change stays just because we made it.</span></li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Reported in dollars, not activity.</strong> You get what moved and what it was worth — not a list of things we were busy with.</span></li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>When we're out of moves, we say so.</strong> Anyone who can't tell you they're stuck can't be trusted when they say they've got it.</span></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section" id="industries">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Industries</div>
+      <h2 class="section-title">We Work With Any Industry</h2>
+      <p class="section-subtitle">From industrial automation to medical practices — if your business has repetitive workflows, we can automate them.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card glass reveal"><h4>Industrial</h4><p>Automation &amp; Manufacturing</p></div>
+      <div class="industry-card glass reveal"><h4>Technology</h4><p>SaaS &amp; Software</p></div>
+      <div class="industry-card glass reveal"><h4>Construction</h4><p>Contractors &amp; Engineering</p></div>
+      <div class="industry-card glass reveal"><h4>Accounting</h4><p>Firms &amp; Financial Services</p></div>
+      <div class="industry-card glass reveal"><h4>Medical</h4><p>Practices &amp; Healthcare</p></div>
+      <div class="industry-card glass reveal"><h4>Professional</h4><p>Services &amp; Consulting</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="section section-light" id="cases">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Results</div>
+      <h2 class="section-title">Real Results. Real Engagements.</h2>
+      <p class="section-subtitle">Every project below was built, deployed, and managed by our team.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card glass-light reveal"><div class="case-header"><span class="case-industry">Accounting</span><span class="case-result">$100K+</span></div><h3>CPA Firm — Audit &amp; Assurance</h3><p>Google Ads + lead generation system that generated over $100K in revenue in less than 90 days — while cutting ad spend to a fraction.</p><div class="case-viz">
+          <div class="viz-title">Revenue in first 90 days</div>
+          <div class="viz-row"><span class="viz-label">Before</span><span class="viz-bar"><span class="viz-fill viz-before" style="width:3%"></span></span><span class="viz-val">$0</span></div>
+          <div class="viz-row"><span class="viz-label">After</span><span class="viz-bar"><span class="viz-fill viz-after" style="width:100%"></span></span><span class="viz-val">$100K+</span></div>
+        </div>
+        <div class="case-metric"><strong>90 days</strong> to $100K+ revenue &middot; <strong>Fraction</strong> of previous ad spend</div></div>
+      <div class="case-card glass-light reveal"><div class="case-header"><span class="case-industry">Technology</span><span class="case-result">15+/mo</span></div><h3>B2B SaaS — Project Management</h3><p>Outbound AI agents + LinkedIn outreach driving 15+ qualified demos per month. Pipeline went from $0 to $800K+ in 4 months.</p><div class="case-viz">
+          <div class="viz-title">Qualified pipeline</div>
+          <div class="viz-row"><span class="viz-label">Before</span><span class="viz-bar"><span class="viz-fill viz-before" style="width:3%"></span></span><span class="viz-val">$0</span></div>
+          <div class="viz-row"><span class="viz-label">After</span><span class="viz-bar"><span class="viz-fill viz-after" style="width:100%"></span></span><span class="viz-val">$800K+</span></div>
+        </div>
+        <div class="case-metric"><strong>15+ demos/mo</strong> &middot; <strong>$800K+</strong> pipeline generated</div></div>
+      <div class="case-card glass-light reveal"><div class="case-header"><span class="case-industry">Engineering</span><span class="case-result">5X ROAS</span></div><h3>Structural &amp; Commercial Engineering</h3><p>Google Ads + landing page overhaul delivering 5X return on ad spend and $800K pipeline in 6 months.</p><div class="case-viz">
+          <div class="viz-title">Return on ad spend</div>
+          <div class="viz-row"><span class="viz-label">Before</span><span class="viz-bar"><span class="viz-fill viz-before" style="width:20%"></span></span><span class="viz-val">1X</span></div>
+          <div class="viz-row"><span class="viz-label">After</span><span class="viz-bar"><span class="viz-fill viz-after" style="width:100%"></span></span><span class="viz-val">5X</span></div>
+        </div>
+        <div class="case-metric"><strong>5X ROAS</strong> &middot; <strong>$800K</strong> pipeline in 6 months</div></div>
+      <div class="case-card glass-light reveal"><div class="case-header"><span class="case-industry">Medical</span><span class="case-result">3X</span></div><h3>Multi-Location Medical Practice</h3><p>SEO + review generation + local ads growing from 50 to 500+ five-star reviews and tripling new patient bookings.</p><div class="case-viz">
+          <div class="viz-title">Five-star reviews</div>
+          <div class="viz-row"><span class="viz-label">Before</span><span class="viz-bar"><span class="viz-fill viz-before" style="width:10%"></span></span><span class="viz-val">50</span></div>
+          <div class="viz-row"><span class="viz-label">After</span><span class="viz-bar"><span class="viz-fill viz-after" style="width:100%"></span></span><span class="viz-val">500+</span></div>
+        </div>
+        <div class="case-metric"><strong>500+</strong> five-star reviews &middot; <strong>3X</strong> new patients</div></div>
+      <div class="case-card glass-light reveal"><div class="case-header"><span class="case-industry">Logistics</span><span class="case-result">$200K+/yr</span></div><h3>50-Truck Logistics Company</h3><p>AI operations agent handling dispatch, invoicing, and driver communications — reducing admin hours by 30% and saving $200K+ per year.</p><div class="case-viz">
+          <div class="viz-title">Monthly admin hours</div>
+          <div class="viz-row"><span class="viz-label">Before</span><span class="viz-bar"><span class="viz-fill viz-before" style="width:100%"></span></span><span class="viz-val">100%</span></div>
+          <div class="viz-row"><span class="viz-label">After</span><span class="viz-bar"><span class="viz-fill viz-after" style="width:70%"></span></span><span class="viz-val">70%</span></div>
+        </div>
+        <div class="case-metric"><strong>30% fewer</strong> admin hours &middot; <strong>$200K+/yr</strong> saved</div></div>
+      <div class="case-card glass-light reveal"><div class="case-header"><span class="case-industry">Manufacturing</span><span class="case-result">$150K</span></div><h3>Industrial Parts Manufacturer</h3><p>AI finance agent automating reconciliation, AP/AR, and reporting — closing books 10 days faster and recovering $150K in missed billings.</p><div class="case-viz">
+          <div class="viz-title">Billings recovered</div>
+          <div class="viz-row"><span class="viz-label">Before</span><span class="viz-bar"><span class="viz-fill viz-before" style="width:3%"></span></span><span class="viz-val">$0</span></div>
+          <div class="viz-row"><span class="viz-label">After</span><span class="viz-bar"><span class="viz-fill viz-after" style="width:100%"></span></span><span class="viz-val">$150K</span></div>
+        </div>
+        <div class="case-metric"><strong>10 days faster</strong> close &middot; <strong>$150K</strong> recovered</div></div>
+      <div class="case-card glass-light reveal"><div class="case-header"><span class="case-industry">E-Commerce</span><span class="case-result">25%</span></div><h3>D2C E-Commerce Brand</h3><p>AI customer support agent + retention automation resolving 60% of tickets without humans and increasing repeat purchases by 25%.</p><div class="case-viz">
+          <div class="viz-title">Tickets needing a human</div>
+          <div class="viz-row"><span class="viz-label">Before</span><span class="viz-bar"><span class="viz-fill viz-before" style="width:100%"></span></span><span class="viz-val">100%</span></div>
+          <div class="viz-row"><span class="viz-label">After</span><span class="viz-bar"><span class="viz-fill viz-after" style="width:40%"></span></span><span class="viz-val">40%</span></div>
+        </div>
+        <div class="case-metric"><strong>60% automated</strong> support &middot; <strong>25% more</strong> repeat purchases</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Priced Like a Hire, Not a Project.</h2>
+      <p class="section-subtitle">A full-time AI lead is a six-figure salary, months of recruiting, and a bet you can't unwind. This is the same function for a flat monthly fee — no hourly billing, no timesheets, cancel anytime.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card glass reveal">
+        <div class="pricing-type">Pilot</div>
+        <div class="pricing-amount">Fixed</div>
+        <div class="pricing-period">one process, one agent</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> We map one process and price it</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> One agent built and shipped</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 2–4 weeks, fixed scope</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Fee credited to your first month</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Start a Pilot</a>
+      </div>
+      <div class="pricing-card glass featured reveal">
+        <div class="pricing-type">Fractional AI Executive</div>
+        <div class="pricing-amount">Monthly</div>
+        <div class="pricing-period">one flat fee &middot; not hourly</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> A senior AI lead who owns the outcome</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> We pick the highest-value work each month</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Agents built, run, and monitored</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Exceptions and breakages handled</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> You own the code. Cancel anytime.</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Book a Call <span class="arrow">→</span></a>
+      </div>
+      <div class="pricing-card glass reveal">
+        <div class="pricing-type">Enterprise</div>
+        <div class="pricing-amount">Custom</div>
+        <div class="pricing-period">more departments, deeper scope</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full-department automation</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Custom integrations &amp; APIs</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> On-premise deployment options</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> SLA &amp; priority support</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Talk to Us</a>
+      </div>
+    </div>
+    <div class="own-wrap reveal">
+      <div class="own-head">
+        <h3>You're buying an asset, not renting one.</h3>
+        <p>Automation platforms are cheaper for a reason: the thing you build lives inside their product, and it belongs to them. Stop paying and it stops. We cost more because you keep what we build.</p>
+      </div>
+      <div class="own-compare">
+        <div class="own-col own-them">
+          <h4>An automation platform</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Your process lives inside their tool</span></li>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Cancel and the automation stops with it</span></li>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>You rent the same capability forever</span></li>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Cheaper monthly — because they keep the asset</span></li>
+          </ul>
+        </div>
+        <div class="own-col own-us">
+          <h4>BilMedia</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>It lives in <strong>your repo</strong>, on <strong>your accounts</strong>, under your keys</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Cancel and <strong>it keeps running</strong> — you keep the code</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>You own the asset from the day it ships</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Costs more — because you're buying it, not borrowing it</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-light" id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-subtitle">Real partnerships across North America.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card glass-light reveal"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="testimonial-text">"BilMedia turned our Google Ads campaigns around. We went from struggling to get leads to <strong>booking 3X more sales calls per month!</strong>"</p><div class="testimonial-author"><div class="testimonial-avatar">GB</div><div class="testimonial-info"><div class="name">George Brinkman</div><div class="role">CEO, Brinkman Consulting</div></div></div></div>
+      <div class="testimonial-card glass-light reveal"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="testimonial-text">"Our Facebook and Instagram ads were losing money before we worked with BilMedia. Now, we're <strong>getting a 6X ROAS</strong> and scaling fast!"</p><div class="testimonial-author"><div class="testimonial-avatar">AK</div><div class="testimonial-info"><div class="name">Andrew Kirby</div><div class="role">Digital Course Creator</div></div></div></div>
+      <div class="testimonial-card glass-light reveal"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="testimonial-text">"Bill and his team helped us <strong>rank #1 on Google</strong> for key search terms in just a few months. Our organic traffic has never been higher!"</p><div class="testimonial-author"><div class="testimonial-avatar">SD</div><div class="testimonial-info"><div class="name">Stephen Dooley</div><div class="role">Co-Founder, Roamly</div></div></div></div>
+      <div class="testimonial-card glass-light reveal"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="testimonial-text">"Our brand messaging was all over the place. Bill crafted a <strong>clear, compelling strategy</strong> that completely changed how customers see us!"</p><div class="testimonial-author"><div class="testimonial-avatar">TM</div><div class="testimonial-info"><div class="name">Tommy Maloy</div><div class="role">Owner, The Copy Creator</div></div></div></div>
+      <div class="testimonial-card glass-light reveal"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="testimonial-text">"We went from <strong>zero social media presence to 40,000 engaged followers</strong> in just 6 months. Their organic strategy is next level!"</p><div class="testimonial-author"><div class="testimonial-avatar">WR</div><div class="testimonial-info"><div class="name">Walter Romanowicz</div><div class="role">Creator Success Consultant</div></div></div></div>
+      <div class="testimonial-card glass-light reveal"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="testimonial-text">"BilMedia gave us a <strong>clear, data-driven marketing strategy</strong> that aligned our paid and organic efforts. Our revenue has doubled since!"</p><div class="testimonial-author"><div class="testimonial-avatar">LC</div><div class="testimonial-info"><div class="name">Lisa Carter</div><div class="role">Founder, Ecom Growth Hub</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">How do you bill?<svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">One flat monthly fee. No hourly rates, no timesheets, no watching the clock. You're paying for the function — the agents built, running, and improving — not for hours logged against it.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">Do you do long-term contracts?<svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">No. Everything is month-to-month. Cancel anytime, no penalties, no hard feelings.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">How quickly can you deploy an AI agent?<svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Most agents go live in 2–4 weeks. We have pre-built templates from past clients that can deploy even faster for common use cases.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">What kind of results can I expect?<svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Our clients see 5-6X ROAS on paid ads, 3X more sales calls, 30% reduction in ops costs, and significant time savings from automation. We'll set specific KPIs together before we start.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">Why a retainer instead of a one-time build?<svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Because an agent isn't a deliverable — it's a hire. APIs change, edge cases surface, your process shifts. A build with nobody operating it quietly stops working, usually within a couple of months. You're not buying a car, you're hiring the driver. The retainer covers running it, fixing it, and building the next one.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">Who owns the agents you build?<svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">You do — completely. Everything ships into your repository, running on your accounts and your API keys. If you stop working with us, the agents keep running and you keep the code. That's the difference between us and an automation platform: on a platform, the thing you built is theirs, and it dies with the subscription. Ours is yours the day it ships.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">Where are you based?<svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Edmonton, Alberta, Canada. We serve clients across North America — mainly Canada and the US.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-light" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Let's Talk</div>
+      <h2 class="section-title">Ready to Deploy AI?</h2>
+      <p class="section-subtitle">Send us one process and we'll map it and price it — free, no obligation. Or book a call and we'll do it live.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item glass-light reveal"><div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>Email</h4><a href="mailto:info@bilmedia.com">info@bilmedia.com</a></div></div>
+        <div class="contact-item glass-light reveal"><div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Location</h4><p>Edmonton, Alberta, Canada</p></div></div>
+      </div>
+      <form class="contact-form glass-light reveal" id="contactForm" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact"/>
+        <p class="form-hp"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" required placeholder="John Smith"/></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="john@company.com"/></div>
+        <div class="form-group"><label for="company">Company</label><input type="text" id="company" name="company" placeholder="Your Company"/></div>
+        <div class="form-group"><label for="interest">Interested In</label><select id="interest" name="interest"><option value="">Select one...</option><option value="free-map">A free process map</option><option value="marketing">AI Marketing Agents</option><option value="sales">AI Sales Agents</option><option value="finance">AI Finance Agents</option><option value="operations">AI Operations Agents</option><option value="multiple">Multiple / Enterprise</option><option value="other">Other</option></select></div>
+        <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us about your business and what you're looking to automate..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Send Message <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">BilMedia<span class="dot"></span></a>
+        <p>Your AI growth partner. We build and deploy autonomous agents that transform how companies market, sell, finance, and operate.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/bilmedia" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">AI Marketing Agents</a></li><li><a href="#services">AI Sales Agents</a></li><li><a href="#services">AI Finance Agents</a></li><li><a href="#services">Operations Automation</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#cases">Results</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:info@bilmedia.com">info@bilmedia.com</a></li><li><a href="#">Edmonton, AB</a></li><li><a href="#">Canada</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 BilMedia. All rights reserved.</span><span>Built in Edmonton.</span></div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 60);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const status = document.getElementById('formStatus');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = 'Sending...';
+  btn.disabled = true;
+  status.textContent = '';
+  status.className = 'form-status';
+  try {
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    form.reset();
+    btn.innerHTML = '✓ Message Sent!';
+    status.textContent = "Thanks \u2014 we'll be in touch within one business day.";
+    status.className = 'form-status success';
+    setTimeout(() => { btn.innerHTML = originalText; btn.disabled = false; }, 4000);
+  } catch (err) {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+    status.innerHTML = 'Something went wrong. Please email <a href="mailto:info@bilmedia.com">info@bilmedia.com</a> directly.';
+    status.className = 'form-status error';
+  }
+}
+
+// Mobile menu
+const navToggle = document.getElementById('navToggle');
+navToggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('menu-open');
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      nav.classList.remove('menu-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.counter);
+      const suffix = el.dataset.suffix || '';
+      const prefix = el.dataset.prefix || '';
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = prefix + target + suffix;
+      } else {
+        const duration = 1400;
+        let startTs = null;
+        const animate = (ts) => {
+          if (startTs === null) startTs = ts;
+          const p = Math.min((ts - startTs) / duration, 1);
+          // easeOutExpo: moves immediately, then decelerates — reads well for small targets
+          const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+          el.textContent = prefix + Math.max(1, Math.round(target * eased)) + suffix;
+          if (p < 1) requestAnimationFrame(animate);
+          else el.textContent = prefix + target + suffix;
+        };
+        requestAnimationFrame(animate);
+      }
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>

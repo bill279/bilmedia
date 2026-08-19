@@ -1,0 +1,13 @@
+# Only the contents of dist/ are published. Source files, backups, and
+# experiments stay in the repo root and are never exposed publicly.
+# Run ./deploy.sh to sync index.html into dist/ and deploy.
+
+[build]
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"

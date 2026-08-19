@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BilMedia — Colour Variations</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #06060c; color: #e8e8f0; padding: 40px 24px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .header h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+  .header p { color: #778da9; font-size: 0.9rem; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.3s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.15); }
+
+  .preview {
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .label {
+    padding: 18px 20px;
+    background: rgba(0,0,0,0.6);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .label h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+  .label p { font-size: 0.78rem; color: #8a8aa0; line-height: 1.5; }
+
+  .swatches { display: flex; gap: 4px; margin-top: 10px; }
+  .swatch { width: 18px; height: 18px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+
+  /* ===== VARIATION 1: Navy + Gold (McKinsey/Accenture) ===== */
+  .var1 .preview { background: #0a1628; }
+  .var1 .mini-nav { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .var1 .mini-logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -1.5px; color: #f5f0e8; }
+  .var1 .mini-logo .dot { display: inline-block; width: 6px; height: 6px; background: #c9a96e; border-radius: 50%; margin-left: 2px; box-shadow: 0 0 8px rgba(201,169,110,0.5); }
+  .var1 .mini-hero { padding: 48px 24px 40px; text-align: center; }
+  .var1 .mini-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(201,169,110,0.3); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #c9a96e; margin-bottom: 16px; }
+  .var1 .mini-dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; }
+  .var1 .mini-hero h2 { font-size: 1.6rem; font-weight: 900; letter-spacing: -1.5px; color: #f5f0e8; margin-bottom: 8px; }
+  .var1 .mini-hero p { font-size: 0.82rem; color: #6b7b8c; max-width: 300px; margin: 0 auto; }
+  .var1 .mini-cta { display: inline-block; margin-top: 16px; padding: 8px 20px; background: #c9a96e; color: #0a1628; font-weight: 700; font-size: 0.78rem; border-radius: 50px; }
+  .var1 .mini-stats { display: flex; justify-content: center; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .var1 .mini-stat .num { font-size: 1.1rem; font-weight: 800; color: #c9a96e; }
+  .var1 .mini-stat .lbl { font-size: 0.65rem; color: #6b7b8c; }
+  .var1 .orb { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
+  .var1 .orb.o1 { width: 150px; height: 150px; background: rgba(201,169,110,0.06); top: -20%; right: -10%; }
+  .var1 .orb.o2 { width: 120px; height: 120px; background: rgba(100,140,180,0.04); bottom: -10%; left: -5%; }
+
+  /* ===== VARIATION 2: Charcoal + Deep Teal ===== */
+  .var2 .preview { background: #1a1a1a; }
+  .var2 .mini-nav { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .var2 .mini-logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -1.5px; color: #f0f0f0; }
+  .var2 .mini-logo .dot { display: inline-block; width: 6px; height: 6px; background: #14b8a6; border-radius: 50%; margin-left: 2px; box-shadow: 0 0 8px rgba(20,184,166,0.5); }
+  .var2 .mini-hero { padding: 48px 24px 40px; text-align: center; }
+  .var2 .mini-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(20,184,166,0.3); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #14b8a6; margin-bottom: 16px; }
+  .var2 .mini-dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; }
+  .var2 .mini-hero h2 { font-size: 1.6rem; font-weight: 900; letter-spacing: -1.5px; color: #f0f0f0; margin-bottom: 8px; }
+  .var2 .mini-hero p { font-size: 0.82rem; color: #a0a0a0; max-width: 300px; margin: 0 auto; }
+  .var2 .mini-cta { display: inline-block; margin-top: 16px; padding: 8px 20px; background: #14b8a6; color: #1a1a1a; font-weight: 700; font-size: 0.78rem; border-radius: 50px; }
+  .var2 .mini-stats { display: flex; justify-content: center; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .var2 .mini-stat .num { font-size: 1.1rem; font-weight: 800; color: #14b8a6; }
+  .var2 .mini-stat .lbl { font-size: 0.65rem; color: #a0a0a0; }
+  .var2 .orb { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
+  .var2 .orb.o1 { width: 150px; height: 150px; background: rgba(20,184,166,0.06); top: -20%; right: -10%; }
+  .var2 .orb.o2 { width: 120px; height: 120px; background: rgba(100,160,140,0.04); bottom: -10%; left: -5%; }
+
+  /* ===== VARIATION 3: Pure Monochrome ===== */
+  .var3 .preview { background: #0a0a0a; }
+  .var3 .mini-nav { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .var3 .mini-logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -1.5px; color: #ffffff; }
+  .var3 .mini-logo .dot { display: inline-block; width: 6px; height: 6px; background: #ffffff; border-radius: 50%; margin-left: 2px; box-shadow: 0 0 8px rgba(255,255,255,0.4); }
+  .var3 .mini-hero { padding: 48px 24px 40px; text-align: center; }
+  .var3 .mini-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #cccccc; margin-bottom: 16px; }
+  .var3 .mini-dot { width: 6px; height: 6px; background: #ffffff; border-radius: 50%; }
+  .var3 .mini-hero h2 { font-size: 1.6rem; font-weight: 900; letter-spacing: -1.5px; color: #ffffff; margin-bottom: 8px; }
+  .var3 .mini-hero p { font-size: 0.82rem; color: #888888; max-width: 300px; margin: 0 auto; }
+  .var3 .mini-cta { display: inline-block; margin-top: 16px; padding: 8px 20px; background: #ffffff; color: #0a0a0a; font-weight: 700; font-size: 0.78rem; border-radius: 50px; }
+  .var3 .mini-stats { display: flex; justify-content: center; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .var3 .mini-stat .num { font-size: 1.1rem; font-weight: 800; color: #ffffff; }
+  .var3 .mini-stat .lbl { font-size: 0.65rem; color: #888888; }
+
+  /* ===== VARIATION 4: Forest + Warm Silver ===== */
+  .var4 .preview { background: #0d1a14; }
+  .var4 .mini-nav { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .var4 .mini-logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -1.5px; color: #e8e8e0; }
+  .var4 .mini-logo .dot { display: inline-block; width: 6px; height: 6px; background: #7c9a8c; border-radius: 50%; margin-left: 2px; box-shadow: 0 0 8px rgba(124,154,140,0.5); }
+  .var4 .mini-hero { padding: 48px 24px 40px; text-align: center; }
+  .var4 .mini-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(124,154,140,0.3); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #7c9a8c; margin-bottom: 16px; }
+  .var4 .mini-dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; }
+  .var4 .mini-hero h2 { font-size: 1.6rem; font-weight: 900; letter-spacing: -1.5px; color: #e8e8e0; margin-bottom: 8px; }
+  .var4 .mini-hero p { font-size: 0.82rem; color: #7a8a80; max-width: 300px; margin: 0 auto; }
+  .var4 .mini-cta { display: inline-block; margin-top: 16px; padding: 8px 20px; background: #7c9a8c; color: #0d1a14; font-weight: 700; font-size: 0.78rem; border-radius: 50px; }
+  .var4 .mini-stats { display: flex; justify-content: center; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .var4 .mini-stat .num { font-size: 1.1rem; font-weight: 800; color: #7c9a8c; }
+  .var4 .mini-stat .lbl { font-size: 0.65rem; color: #7a8a80; }
+  .var4 .orb { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
+  .var4 .orb.o1 { width: 150px; height: 150px; background: rgba(124,154,140,0.06); top: -20%; right: -10%; }
+  .var4 .orb.o2 { width: 120px; height: 120px; background: rgba(80,120,100,0.04); bottom: -10%; left: -5%; }
+
+  /* ===== VARIATION 5: Deep Plum + Warm Ivory ===== */
+  .var5 .preview { background: #16121e; }
+  .var5 .mini-nav { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .var5 .mini-logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -1.5px; color: #f0ece8; }
+  .var5 .mini-logo .dot { display: inline-block; width: 6px; height: 6px; background: #b08cc0; border-radius: 50%; margin-left: 2px; box-shadow: 0 0 8px rgba(176,140,192,0.5); }
+  .var5 .mini-hero { padding: 48px 24px 40px; text-align: center; }
+  .var5 .mini-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(176,140,192,0.3); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #b08cc0; margin-bottom: 16px; }
+  .var5 .mini-dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; }
+  .var5 .mini-hero h2 { font-size: 1.6rem; font-weight: 900; letter-spacing: -1.5px; color: #f0ece8; margin-bottom: 8px; }
+  .var5 .mini-hero p { font-size: 0.82rem; color: #908898; max-width: 300px; margin: 0 auto; }
+  .var5 .mini-cta { display: inline-block; margin-top: 16px; padding: 8px 20px; background: #b08cc0; color: #16121e; font-weight: 700; font-size: 0.78rem; border-radius: 50px; }
+  .var5 .mini-stats { display: flex; justify-content: center; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .var5 .mini-stat .num { font-size: 1.1rem; font-weight: 800; color: #b08cc0; }
+  .var5 .mini-stat .lbl { font-size: 0.65rem; color: #908898; }
+  .var5 .orb { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
+  .var5 .orb.o1 { width: 150px; height: 150px; background: rgba(176,140,192,0.06); top: -20%; right: -10%; }
+  .var5 .orb.o2 { width: 120px; height: 120px; background: rgba(120,100,160,0.04); bottom: -10%; left: -5%; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>BilMedia — Colour Variations</h1>
+    <p>All keep your navy/black base. Only the accent changes. Pick one.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- Var 1: Navy + Gold -->
+    <div class="card var1">
+      <div class="preview">
+        <div class="orb o1"></div>
+        <div class="orb o2"></div>
+        <div class="mini-nav">
+          <div class="mini-logo">BilMedia<span class="dot"></span></div>
+        </div>
+        <div class="mini-hero">
+          <div class="mini-badge"><span class="mini-dot"></span> AI Growth Partner</div>
+          <h2>We Don't Just Advise. We Build.</h2>
+          <p>Autonomous AI agents for marketing, sales, finance, and operations.</p>
+          <div class="mini-cta">Book a Call →</div>
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="num">$100K+</div><div class="lbl">Revenue</div></div>
+            <div class="mini-stat"><div class="num">6X</div><div class="lbl">ROAS</div></div>
+            <div class="mini-stat"><div class="num">50+</div><div class="lbl">Clients</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Option 1 — Navy + Gold</h3>
+        <p>McKinsey / Accenture energy. Premium, established, consulting-grade.</p>
+        <div class="swatches">
+          <div class="swatch" style="background: #0a1628;"></div>
+          <div class="swatch" style="background: #c9a96e;"></div>
+          <div class="swatch" style="background: #f5f0e8;"></div>
+          <div class="swatch" style="background: #6b7b8c;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Var 2: Charcoal + Teal -->
+    <div class="card var2">
+      <div class="preview">
+        <div class="orb o1"></div>
+        <div class="orb o2"></div>
+        <div class="mini-nav">
+          <div class="mini-logo">BilMedia<span class="dot"></span></div>
+        </div>
+        <div class="mini-hero">
+          <div class="mini-badge"><span class="mini-dot"></span> AI Growth Partner</div>
+          <h2>We Don't Just Advise. We Build.</h2>
+          <p>Autonomous AI agents for marketing, sales, finance, and operations.</p>
+          <div class="mini-cta">Book a Call →</div>
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="num">$100K+</div><div class="lbl">Revenue</div></div>
+            <div class="mini-stat"><div class="num">6X</div><div class="lbl">ROAS</div></div>
+            <div class="mini-stat"><div class="num">50+</div><div class="lbl">Clients</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Option 2 — Charcoal + Teal</h3>
+        <p>Modern, distinct, confident. Not corporate-blue. Not startup-neon.</p>
+        <div class="swatches">
+          <div class="swatch" style="background: #1a1a1a;"></div>
+          <div class="swatch" style="background: #14b8a6;"></div>
+          <div class="swatch" style="background: #f0f0f0;"></div>
+          <div class="swatch" style="background: #a0a0a0;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Var 3: Monochrome -->
+    <div class="card var3">
+      <div class="preview">
+        <div class="mini-nav">
+          <div class="mini-logo">BilMedia<span class="dot"></span></div>
+        </div>
+        <div class="mini-hero">
+          <div class="mini-badge"><span class="mini-dot"></span> AI Growth Partner</div>
+          <h2>We Don't Just Advise. We Build.</h2>
+          <p>Autonomous AI agents for marketing, sales, finance, and operations.</p>
+          <div class="mini-cta">Book a Call →</div>
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="num">$100K+</div><div class="lbl">Revenue</div></div>
+            <div class="mini-stat"><div class="num">6X</div><div class="lbl">ROAS</div></div>
+            <div class="mini-stat"><div class="num">50+</div><div class="lbl">Clients</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Option 3 — Pure Monochrome</h3>
+        <p>Black, white, grey. The wordmark does all the work. Timeless.</p>
+        <div class="swatches">
+          <div class="swatch" style="background: #0a0a0a;"></div>
+          <div class="swatch" style="background: #ffffff;"></div>
+          <div class="swatch" style="background: #888888;"></div>
+          <div class="swatch" style="background: #333333;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Var 4: Forest + Silver -->
+    <div class="card var4">
+      <div class="preview">
+        <div class="orb o1"></div>
+        <div class="orb o2"></div>
+        <div class="mini-nav">
+          <div class="mini-logo">BilMedia<span class="dot"></span></div>
+        </div>
+        <div class="mini-hero">
+          <div class="mini-badge"><span class="mini-dot"></span> AI Growth Partner</div>
+          <h2>We Don't Just Advise. We Build.</h2>
+          <p>Autonomous AI agents for marketing, sales, finance, and operations.</p>
+          <div class="mini-cta">Book a Call →</div>
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="num">$100K+</div><div class="lbl">Revenue</div></div>
+            <div class="mini-stat"><div class="num">6X</div><div class="lbl">ROAS</div></div>
+            <div class="mini-stat"><div class="num">50+</div><div class="lbl">Clients</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Option 4 — Forest + Silver</h3>
+        <p>Unexpected. Calm authority. Works for industrial, medical, professional.</p>
+        <div class="swatches">
+          <div class="swatch" style="background: #0d1a14;"></div>
+          <div class="swatch" style="background: #7c9a8c;"></div>
+          <div class="swatch" style="background: #e8e8e0;"></div>
+          <div class="swatch" style="background: #7a8a80;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Var 5: Plum + Ivory -->
+    <div class="card var5">
+      <div class="preview">
+        <div class="orb o1"></div>
+        <div class="orb o2"></div>
+        <div class="mini-nav">
+          <div class="mini-logo">BilMedia<span class="dot"></span></div>
+        </div>
+        <div class="mini-hero">
+          <div class="mini-badge"><span class="mini-dot"></span> AI Growth Partner</div>
+          <h2>We Don't Just Advise. We Build.</h2>
+          <p>Autonomous AI agents for marketing, sales, finance, and operations.</p>
+          <div class="mini-cta">Book a Call →</div>
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="num">$100K+</div><div class="lbl">Revenue</div></div>
+            <div class="mini-stat"><div class="num">6X</div><div class="lbl">ROAS</div></div>
+            <div class="mini-stat"><div class="num">50+</div><div class="lbl">Clients</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Option 5 — Plum + Ivory</h3>
+        <p>Warm, distinctive, premium. Ownable. Nobody else in AI looks like this.</p>
+        <div class="swatches">
+          <div class="swatch" style="background: #16121e;"></div>
+          <div class="swatch" style="background: #b08cc0;"></div>
+          <div class="swatch" style="background: #f0ece8;"></div>
+          <div class="swatch" style="background: #908898;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06);">
+    <p style="color: #778da9; font-size: 0.82rem;">All variations keep the same layout, sections, and effects. Only the accent color changes. Pick one and I'll apply it to the live site.</p>
+  </div>
+</div>
+</body>
+</html>

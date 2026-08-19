@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BilMedia — AI Growth Partner | Autonomous AI Agents for Business</title>
+  <meta name="description" content="BilMedia is an AI growth partner agency based in Edmonton, Canada. We build and deploy autonomous AI agents for marketing, sales, finance, and operations. $3K+ monthly retainers, month-to-month." />
+  <meta name="keywords" content="AI agency, AI agents, autonomous AI, business automation, AI marketing, AI sales, AI finance, Edmonton, Canada, digital marketing, AI consulting" />
+  <meta name="author" content="BilMedia" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://bilmedia.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BilMedia — AI Growth Partner | Autonomous AI Agents" />
+  <meta property="og:description" content="We build and deploy autonomous AI agents that transform how companies market, sell, finance, and operate. Edmonton-based, serving North America." />
+  <meta property="og:url" content="https://bilmedia.com/" />
+  <meta property="og:site_name" content="BilMedia" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BilMedia — AI Growth Partner" />
+  <meta name="twitter:description" content="Autonomous AI agents for marketing, sales, finance, and ops. We don't just advise — we build and deploy." />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BilMedia",
+    "url": "https://bilmedia.com",
+    "logo": "https://bilmedia.com/logo.png",
+    "description": "AI growth partner agency building autonomous AI agents for business.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Edmonton",
+      "addressRegion": "Alberta",
+      "addressCountry": "CA"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-780-818-4742",
+      "contactType": "sales",
+      "email": "info@bilmedia.com"
+    },
+    "sameAs": [
+      "https://www.facebook.com/bilmedia",
+      "https://www.linkedin.com/company/bilmedia",
+      "https://twitter.com/bilmedia"
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #06060c;
+      --bg-elevated: #0c0c18;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.15);
+      --text: #e8e8f0;
+      --text-muted: #8a8aa0;
+      --accent: #00f0ff;
+      --accent-2: #a855f7;
+      --accent-3: #ff006e;
+      --gradient: linear-gradient(135deg, #00f0ff, #a855f7, #ff006e);
+      --gradient-subtle: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(168, 85, 247, 0.1));
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow-glow: 0 0 40px rgba(0, 240, 255, 0.15);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+    /* Selection */
+    ::selection { background: rgba(0, 240, 255, 0.3); color: #fff; }
+
+    /* Utility */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -1.5px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(6, 6, 12, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo .logo-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent);
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--gradient);
+      color: #000 !important;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.35);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      margin: 6px 0;
+      transition: var(--transition);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-gradient-orb.orb-1 {
+      width: 600px;
+      height: 600px;
+      background: var(--accent);
+      top: -10%;
+      right: -10%;
+      animation: float-orb 8s ease-in-out infinite;
+    }
+
+    .hero-gradient-orb.orb-2 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent-2);
+      bottom: -10%;
+      left: -10%;
+      animation: float-orb 10s ease-in-out infinite reverse;
+    }
+
+    .hero-gradient-orb.orb-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--accent-3);
+      top: 40%;
+      left: 50%;
+      animation: float-orb 12s ease-in-out infinite;
+    }
+
+    @keyframes float-orb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fade-up 0.8s ease 0.3s forwards;
+    }
+
+    .hero-badge .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #00ff88;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fade-up 0.8s ease 0.5s forwards;
+    }
+
+    .hero h1 .line-2 {
+      display: block;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fade-up 0.8s ease 0.7s forwards;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fade-up 0.8s ease 0.9s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #000;
+      box-shadow: 0 0 24px rgba(0, 240, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn .arrow {
+      transition: var(--transition);
+    }
+
+    .btn:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      animation: fade-up 0.8s ease 1.1s forwards;
+    }
+
+    .hero-stat .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .hero-stat .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .services .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .services .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 36px 32px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-subtle);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-subtle);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card .service-tag {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 10px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how {
+      padding: 120px 0;
+      background: var(--bg-elevated);
+      position: relative;
+    }
+
+    .how .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .how .section-subtitle { margin: 0 auto; }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      position: relative;
+    }
+
+    .how-step {
+      text-align: center;
+      padding: 40px 28px;
+      position: relative;
+    }
+
+    .step-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -4px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .how-step h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .how-step p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .how-arrow {
+      position: absolute;
+      top: 60px;
+      right: -20px;
+      width: 40px;
+      height: 40px;
+      color: var(--border);
+      z-index: 2;
+    }
+
+    /* ===== INDUSTRIES ===== */
+    .industries {
+      padding: 120px 0;
+    }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .industry-card {
+      padding: 28px 20px;
+      text-align: center;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .industry-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .industry-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .industry-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .industry-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== PRICING ===== */
+    .pricing {
+      padding: 120px 0;
+      background: var(--bg-elevated);
+    }
+
+    .pricing .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .pricing .section-subtitle { margin: 0 auto; }
+
+    .pricing-note {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 16px 24px;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(0, 240, 255, 0.3);
+      box-shadow: 0 0 60px rgba(0, 240, 255, 0.08);
+    }
+
+    .pricing-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 5px 16px;
+      background: var(--gradient);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 50px;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .pricing-type {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .pricing-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 4px;
+    }
+
+    .pricing-period {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pricing-features li:last-child { border-bottom: none; }
+
+    .pricing-features li svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      stroke: #00ff88;
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      padding: 120px 0;
+    }
+
+    .testimonials .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .testimonials .section-subtitle { margin: 0 auto; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      padding: 36px 32px;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-stars svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffd700;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-subtle);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    .testimonial-info .name {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .testimonial-info .role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 120px 0;
+      background: var(--bg-elevated);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-content h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .about-stat {
+      text-align: center;
+      padding: 24px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    .about-stat .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-stat .label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .about-visual {
+      position: relative;
+      aspect-ratio: 1;
+      max-width: 480px;
+      margin-left: auto;
+    }
+
+    .about-visual-inner {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .about-visual-inner::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, var(--accent), transparent, var(--accent-2), transparent);
+      animation: rotate-border 8s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes rotate-border {
+      to { transform: rotate(360deg); }
+    }
+
+    .about-visual-inner::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      background: var(--bg-elevated);
+      border-radius: calc(var(--radius) - 3px);
+    }
+
+    .about-visual-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .about-visual-text .big-text {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -3px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-visual-text .sub-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      padding: 120px 0;
+    }
+
+    .contact .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .contact .section-subtitle { margin: 0 auto; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      transition: var(--transition);
+    }
+
+    .contact-item:hover {
+      border-color: var(--border-hover);
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background: var(--gradient-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-item-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .contact-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-item p, .contact-item a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-item a:hover { color: var(--accent); }
+
+    .contact-form {
+      padding: 36px 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238a8aa0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+
+    .form-group select option {
+      background: var(--bg-elevated);
+      color: var(--text);
+    }
+
+    .contact-form .btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 1rem;
+      padding: 16px 28px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 64px 0 32px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 16px 0 24px;
+      max-width: 300px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      border-color: var(--accent);
+      background: rgba(0, 240, 255, 0.08);
+    }
+
+    .footer-social a svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover svg { fill: var(--accent); }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-col ul a:hover { color: var(--text); }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom a:hover { color: var(--accent); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 968px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(6, 6, 12, 0.95);
+        backdrop-filter: blur(24px);
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+        gap: 20px;
+      }
+
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { max-width: 360px; margin: 0 auto; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+      .how-steps { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; letter-spacing: -1.5px; }
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .how-steps { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Loading screen */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-content {
+      text-align: center;
+    }
+
+    .loader-bar {
+      width: 160px;
+      height: 3px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .loader-bar-inner {
+      height: 100%;
+      background: var(--gradient);
+      width: 0%;
+      animation: load-bar 1.5s ease forwards;
+    }
+
+    @keyframes load-bar {
+      to { width: 100%; }
+    }
+
+    .loader-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      margin-top: 16px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+      <div class="loader-text">Initializing</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-dot"></span>
+        Bill Media
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how">Process</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Results</a></li>
+        <li><a href="#contact" class="nav-cta">Book a Call <span class="arrow">→</span></a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-gradient-orb orb-1"></div>
+      <div class="hero-gradient-orb orb-2"></div>
+      <div class="hero-gradient-orb orb-3"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="status-dot"></span>
+          Now Deploying AI Agents — 2026
+        </div>
+        <h1>
+          <span class="line-1">We Don't Just</span>
+          <span class="line-2 gradient-text">Advise. We Build.</span>
+        </h1>
+        <p class="hero-desc">
+          BilMedia is your AI growth partner. We design, build, and deploy autonomous AI agents across marketing, sales, finance, and operations — so your company scales faster with less overhead.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn btn-primary">
+            Book Strategy Call
+            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn btn-ghost">See What We Build</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-num gradient-text">$0M+</div>
+            <div class="stat-label">Managed Ad Spend</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num gradient-text">$0M+</div>
+            <div class="stat-label">Pipeline Generated</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num gradient-text">0%+</div>
+            <div class="stat-label">Faster Time to Market</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num gradient-text">0+</div>
+            <div class="stat-label">C-Suite Appointments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">AI Agents That Actually <span class="gradient-text">Do the Work</span></h2>
+        <p class="section-subtitle">From autonomous marketing campaigns to AI-powered sales outreach, finance reconciliation, and operations — we build agents that run 24/7.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card glass reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3>AI Marketing Agents</h3>
+          <p>Autonomous agents that manage paid ads, SEO, content, and social — learning and optimizing in real time without human babysitting.</p>
+          <span class="service-tag">Autonomous</span>
+        </div>
+        <div class="service-card glass reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>AI Sales Agents</h3>
+          <p>Outbound agents running personalized cold email, LinkedIn outreach, and lead qualification — booking meetings on autopilot.</p>
+          <span class="service-tag">Revenue</span>
+        </div>
+        <div class="service-card glass reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>AI Finance Agents</h3>
+          <p>Automate reconciliation, reporting, accounts payable/receivable, and financial forecasting with AI that understands your books.</p>
+          <span class="service-tag">Profit</span>
+        </div>
+        <div class="service-card glass reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>AI Operations Agents</h3>
+          <p>Streamline project management, customer support, HR workflows, and internal processes with agents that handle the repetitive stuff.</p>
+          <span class="service-tag">Efficiency</span>
+        </div>
+        <div class="service-card glass reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>AI Customer Experience</h3>
+          <p>24/7 intelligent support agents, onboarding flows, and retention automation that feel human — but never sleep.</p>
+          <span class="service-tag">Retention</span>
+        </div>
+        <div class="service-card glass reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+          </div>
+          <h3>Data & Analytics</h3>
+          <p>Custom dashboards, predictive models, and AI-driven insights that tell you what's working, what's not, and what's next.</p>
+          <span class="service-tag">Intelligence</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">From Discovery to <span class="gradient-text">Deployment</span></h2>
+        <p class="section-subtitle">No long-term contracts. No fluff. We audit, build, deploy, and optimize — month to month.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step glass reveal">
+          <div class="step-number">01</div>
+          <h3>Discovery Audit</h3>
+          <p>We analyze your workflows, tech stack, and goals to identify the highest-impact AI opportunities.</p>
+        </div>
+        <div class="how-step glass reveal">
+          <div class="step-number">02</div>
+          <h3>Agent Design</h3>
+          <p>Our team designs custom AI agents tailored to your specific business processes and data.</p>
+        </div>
+        <div class="how-step glass reveal">
+          <div class="step-number">03</div>
+          <h3>Build & Test</h3>
+          <p>We build with Claude Code, Codex, and production-grade frameworks — fully tested before deployment.</p>
+        </div>
+        <div class="how-step glass reveal">
+          <div class="step-number">04</div>
+          <h3>Deploy & Optimize</h3>
+          <p>Agents go live. We monitor, iterate, and scale — you pay for results, not effort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center;">
+        <div class="section-label">Industries</div>
+        <h2 class="section-title">We've Worked In <span class="gradient-text">Every Space</span></h2>
+        <p class="section-subtitle" style="margin:0 auto;">From industrial automation to medical practices — if your business has repetitive workflows, we can automate them.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card glass reveal">
+          <div class="industry-icon">⚙️</div>
+          <h4>Industrial</h4>
+          <p>Automation & Manufacturing</p>
+        </div>
+        <div class="industry-card glass reveal">
+          <div class="industry-icon">💻</div>
+          <h4>Technology</h4>
+          <p>SaaS & Software</p>
+        </div>
+        <div class="industry-card glass reveal">
+          <div class="industry-icon">🏗️</div>
+          <h4>Construction</h4>
+          <p>Contractors & Engineering</p>
+        </div>
+        <div class="industry-card glass reveal">
+          <div class="industry-icon">📊</div>
+          <h4>Accounting</h4>
+          <p>Firms & Financial Services</p>
+        </div>
+        <div class="industry-card glass reveal">
+          <div class="industry-icon">🏥</div>
+          <h4>Medical</h4>
+          <p>Practices & Healthcare</p>
+        </div>
+        <div class="industry-card glass reveal">
+          <div class="industry-icon">💼</div>
+          <h4>Professional</h4>
+          <p>Services & Consulting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Simple, Month-to-Month</h2>
+        <p class="section-subtitle">No long-term contracts. No hidden fees. Cancel anytime.</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="pricing-note glass">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Average retainers start at $3,000/month — billed monthly
+        </div>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card glass reveal">
+          <div class="pricing-type">Project</div>
+          <div class="pricing-amount">$250</div>
+          <div class="pricing-period">per hour</div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Single-agent build</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Code & deployment included</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 2-week turnaround</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Documentation & training</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost">Get Started</a>
+        </div>
+        <div class="pricing-card glass featured reveal">
+          <div class="pricing-type">Retainer</div>
+          <div class="pricing-amount">$3K+</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Multi-agent systems</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ongoing optimization & scaling</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Dedicated team access</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Monthly strategy & reporting</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Cancel anytime</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Book a Call <span class="arrow">→</span></a>
+        </div>
+        <div class="pricing-card glass reveal">
+          <div class="pricing-type">Enterprise</div>
+          <div class="pricing-amount">Custom</div>
+          <div class="pricing-period">tailored to scope</div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full-department automation</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Custom integrations & APIs</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> On-premise deployment options</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> SLA & priority support</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost">Talk to Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Results</div>
+        <h2 class="section-title">What Our Clients <span class="gradient-text">Say</span></h2>
+        <p class="section-subtitle">Real results from real partnerships across North America.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card glass reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"BilMedia turned our Google Ads campaigns around. We went from struggling to get leads to <strong>booking 3X more sales calls per month!</strong>"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">GB</div>
+            <div class="testimonial-info">
+              <div class="name">George Brinkman</div>
+              <div class="role">CEO, Brinkman Consulting</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Our Facebook and Instagram ads were losing money before we worked with BilMedia. Now, we're <strong>getting a 6X ROAS</strong> and scaling fast!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AK</div>
+            <div class="testimonial-info">
+              <div class="name">Andrew Kirby</div>
+              <div class="role">Digital Course Creator</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Bill and his team helped us <strong>rank #1 on Google</strong> for key search terms in just a few months. Our organic traffic has never been higher!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SD</div>
+            <div class="testimonial-info">
+              <div class="name">Stephen Dooley</div>
+              <div class="role">Co-Founder, Roamly</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Our brand messaging was all over the place. Bill crafted a <strong>clear, compelling strategy</strong> that completely changed how customers see us!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">TM</div>
+            <div class="testimonial-info">
+              <div class="name">Tommy Maloy</div>
+              <div class="role">Owner, The Copy Creator</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"We went from <strong>zero social media presence to 40,000 engaged followers</strong> in just 6 months. Their organic strategy is next level!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">WR</div>
+            <div class="testimonial-info">
+              <div class="name">Walter Romanowicz</div>
+              <div class="role">Creator Success Consultant</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"BilMedia gave us a <strong>clear, data-driven marketing strategy</strong> that aligned our paid and organic efforts. Our revenue has doubled since!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">LC</div>
+            <div class="testimonial-info">
+              <div class="name">Lisa Carter</div>
+              <div class="role">Founder, Ecom Growth Hub</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content reveal">
+          <div class="section-label">About Us</div>
+          <h2>Digital Marketers Who <span class="gradient-text">Learned to Code the Future</span></h2>
+          <p>We've spent years running paid ads, SEO, social media, and B2B lead generation for companies across North America. We know what works — and what doesn't.</p>
+          <p>Now we're combining that hard-won marketing expertise with cutting-edge AI agent development. We don't just tell you what to do — we build the agents that do it for you.</p>
+          <p>Based in Edmonton, Alberta. Serving clients across Canada and the US. Month-to-month. No BS.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="num">5+</div>
+              <div class="label">Years Experience</div>
+            </div>
+            <div class="about-stat">
+              <div class="num">50+</div>
+              <div class="label">Clients Served</div>
+            </div>
+            <div class="about-stat">
+              <div class="num">6X</div>
+              <div class="label">Avg. ROAS</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="about-visual-inner">
+            <div class="about-visual-text">
+              <div class="big-text">BM</div>
+              <div class="sub-text">AI Growth Partner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Let's Talk</div>
+        <h2 class="section-title">Ready to <span class="gradient-text">Deploy AI?</span></h2>
+        <p class="section-subtitle">Book a free strategy call. We'll audit your workflows and show you exactly where AI can drive ROI.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item glass reveal">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:info@bilmedia.com">info@bilmedia.com</a>
+            </div>
+          </div>
+          <div class="contact-item glass reveal">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+17808184742">(780) 818-4742</a>
+            </div>
+          </div>
+          <div class="contact-item glass reveal">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p>Edmonton, Alberta, Canada</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form glass reveal" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Smith" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="john@company.com" />
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Your Company" />
+          </div>
+          <div class="form-group">
+            <label for="interest">Interested In</label>
+            <select id="interest" name="interest">
+              <option value="">Select one...</option>
+              <option value="marketing">AI Marketing Agents</option>
+              <option value="sales">AI Sales Agents</option>
+              <option value="finance">AI Finance Agents</option>
+              <option value="operations">AI Operations Agents</option>
+              <option value="multiple">Multiple / Enterprise</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your business and what you're looking to automate..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Send Message
+            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-dot"></span>
+            Bill Media
+          </a>
+          <p>Your AI growth partner. We build and deploy autonomous agents that transform how companies market, sell, finance, and operate.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/bilmedia" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/bilmedia" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://twitter.com/bilmedia" aria-label="Twitter" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">AI Marketing Agents</a></li>
+            <li><a href="#services">AI Sales Agents</a></li>
+            <li><a href="#services">AI Finance Agents</a></li>
+            <li><a href="#services">AI Operations</a></li>
+            <li><a href="#services">Data & Analytics</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#testimonials">Results</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:info@bilmedia.com">info@bilmedia.com</a></li>
+            <li><a href="tel:+17808184742">(780) 818-4742</a></li>
+            <li><a href="#">Edmonton, AB</a></li>
+            <li><a href="#">Canada</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 BilMedia. All rights reserved.</span>
+        <span>Designed for the future. Built in Edmonton. 🇨🇦</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Particle Background =====
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 0.5;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    initParticles();
+    window.addEventListener('resize', initParticles);
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(0, 240, 255, ${0.08 * (1 - dist / 140)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+        particles[i].update();
+        particles[i].draw();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ===== Nav scroll =====
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ===== Mobile menu =====
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // ===== Loader =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 1600);
+    });
+
+    // ===== GSAP ScrollTrigger + reveals =====
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger within same container
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // GSAP animations for specific elements
+    gsap.from('.hero-content > *', {
+      scrollTrigger: { trigger: '.hero', start: 'top 80%' },
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      stagger: 0.12,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.service-card', {
+      scrollTrigger: { trigger: '.services-grid', start: 'top 80%' },
+      opacity: 0,
+      y: 40,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.testimonial-card', {
+      scrollTrigger: { trigger: '.testimonials-grid', start: 'top 80%' },
+      opacity: 0,
+      y: 40,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.how-step', {
+      scrollTrigger: { trigger: '.how-steps', start: 'top 80%' },
+      opacity: 0,
+      x: -30,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.industry-card', {
+      scrollTrigger: { trigger: '.industries-grid', start: 'top 85%' },
+      opacity: 0,
+      scale: 0.9,
+      duration: 0.5,
+      stagger: 0.06,
+      ease: 'power3.out'
+    });
+
+    // ===== Contact form =====
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Sending...';
+      btn.disabled = true;
+
+      // Simulate form submission (replace with actual endpoint)
+      setTimeout(() => {
+        btn.innerHTML = '✓ Message Sent!';
+        btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc6a)';
+        setTimeout(() => {
+          form.reset();
+          btn.innerHTML = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      }, 1500);
+    }
+
+    // ===== Smooth anchor scroll =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
