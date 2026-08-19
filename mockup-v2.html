@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BilMedia — Mock-up v2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0b0e14;
+    color: #e8e8f0;
+    line-height: 1.6;
+  }
+
+  /* TERMINAL HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 24px 80px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0d1117 0%, #0b0e14 100%);
+  }
+  .terminal-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.4;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,212,170,0.03) 2px, rgba(0,212,170,0.03) 4px),
+      radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.15) 0%, transparent 60%);
+  }
+  .terminal-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(0,212,170,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,170,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(0,212,170,0.1);
+    border: 1px solid rgba(0,212,170,0.3);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: #00d4aa;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .hero-badge::before { content: '$'; }
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, #00d4aa, #635bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: #8a8aa0;
+    margin-bottom: 16px;
+  }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: #a0a0b0;
+    max-width: 600px;
+    line-height: 1.75;
+    margin: 0 auto 32px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: rgba(0,212,170,0.15);
+    border: 1px solid rgba(0,212,170,0.4);
+    color: #00d4aa;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .hero-cta:hover { background: rgba(0,212,170,0.25); }
+
+  /* SECTION */
+  .section { padding: 100px 24px; }
+  .section-light { background: #f8f9fc; color: #1a1a2e; }
+  .section-light h2 { color: #1a1a2e; }
+  .section-light p { color: #4a4a5c; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00d4aa;
+    margin-bottom: 12px;
+  }
+  .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+  .section-subtitle { font-size: 1rem; color: #8a8aa0; max-width: 500px; line-height: 1.7; }
+  .section-header { text-align: center; margin-bottom: 48px; }
+  .section-header .section-subtitle { margin: 0 auto; }
+
+  /* SERVICES GRID */
+  .grid-6 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+  .dept-card {
+    padding: 24px 18px;
+    text-align: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    transition: 0.2s;
+  }
+  .dept-card:hover { border-color: rgba(0,212,170,0.3); transform: translateY(-2px); }
+  .dept-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; color: #f0f0f5; }
+  .dept-card p { font-size: 0.72rem; color: #7a7a8c; }
+
+  /* CASE STUDY DASHBOARDS */
+  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+  .case-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .case-dashboard {
+    padding: 16px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .case-dash-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: #7a7a8c;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .case-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .case-metric {
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .case-metric-val { font-size: 1.1rem; font-weight: 800; color: #00d4aa; }
+  .case-metric-label { font-size: 0.6rem; color: #7a7a8c; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+  .case-body { padding: 20px; }
+  .case-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .case-body p { font-size: 0.85rem; color: #8a8aa0; line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .test-card {
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+  .test-text { font-size: 0.9rem; color: #c4c4d2; line-height: 1.7; margin-bottom: 16px; }
+  .test-author { display: flex; align-items: center; gap: 10px; }
+  .test-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #00d4aa, #635bff); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem; }
+  .test-name { font-weight: 600; font-size: 0.85rem; }
+  .test-role { font-size: 0.72rem; color: #7a7a8c; }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
+  .price-card {
+    padding: 28px 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .price-card.featured { border-color: rgba(0,212,170,0.4); }
+  .price-type { font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #7a7a8c; margin-bottom: 8px; }
+  .price-amount { font-size: 2.2rem; font-weight: 800; margin-bottom: 4px; }
+  .price-period { font-size: 0.85rem; color: #00d4aa; margin-bottom: 16px; }
+  .price-features { list-style: none; text-align: left; }
+  .price-features li { padding: 6px 0; font-size: 0.85rem; color: #a0a0b0; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.2rem; }
+    .grid-6 { grid-template-columns: repeat(2, 1fr); }
+    .case-metrics { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TERMINAL HERO -->
+<section class="hero">
+  <div class="terminal-bg"></div>
+  <div class="terminal-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">bilmedia --deploy</div>
+    <h1>Your Fractional <span>AI Team</span>.</h1>
+    <p class="hero-tagline">marketing → sales → finance → operations → HR → accounting → supply chain → *</p>
+    <p class="hero-desc">We work across almost any department and use case. If something's outside our scope, we'll be transparent about it — no hard sell, no surprises.</p>
+    <button class="hero-cta">$ book-strategy-call.sh</button>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-light" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Not Four Departments. Any Department.</h2>
+      <p class="section-subtitle">We've automated work across every function below — and if yours isn't listed, that doesn't mean we can't. If it's repeatable, we can likely automate it. If we can't, we'll tell you straight.</p>
+    </div>
+    <div class="grid-6">
+      <div class="dept-card"><h4>Marketing</h4><p>Ads, SEO, content, social</p></div>
+      <div class="dept-card"><h4>Sales</h4><p>Outbound, enrichment, routing</p></div>
+      <div class="dept-card"><h4>Finance</h4><p>Reconciliation, reporting, AP/AR</p></div>
+      <div class="dept-card"><h4>Operations</h4><p>PM, support, HR workflows</p></div>
+      <div class="dept-card"><h4>Accounting</h4><p>Month-end, billings, recovery</p></div>
+      <div class="dept-card"><h4>Supply Chain</h4><p>Inventory, dispatch, vendors</p></div>
+      <div class="dept-card"><h4>HR</h4><p>Onboarding, triage, payroll prep</p></div>
+      <div class="dept-card"><h4>Legal</h4><p>Contract review, renewal watch</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES WITH DASHBOARDS -->
+<section class="section" id="cases">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Results</div>
+      <h2 class="section-title">Every Project, Its Own Dashboard.</h2>
+      <p class="section-subtitle">Each engagement ships with live metrics you can watch — not a report we email you.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-dashboard">
+          <div class="case-dash-title">cpa_firm_audit — revenue.agent</div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-val">$100K+</div><div class="case-metric-label">90 Days</div></div>
+            <div class="case-metric"><div class="case-metric-val">-62%</div><div class="case-metric-label">Ad Spend</div></div>
+            <div class="case-metric"><div class="case-metric-val">5X</div><div class="case-metric-label">ROAS</div></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <h3>CPA Firm — Audit &amp; Assurance</h3>
+          <p>Google Ads + lead gen agent. Revenue in 90 days while cutting spend to a fraction.</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-dashboard">
+          <div class="case-dash-title">saas_project_mgmt — pipeline.agent</div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-val">15+</div><div class="case-metric-label">Demos/Mo</div></div>
+            <div class="case-metric"><div class="case-metric-val">$800K</div><div class="case-metric-label">Pipeline</div></div>
+            <div class="case-metric"><div class="case-metric-val">0→1</div><div class="case-metric-label">In 4 Mo</div></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <h3>B2B SaaS — Project Management</h3>
+          <p>Outbound AI agents + LinkedIn outreach. Pipeline from $0 to $800K+ in 4 months.</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-dashboard">
+          <div class="case-dash-title">logistics_50truck — dispatch.agent</div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-val">-30%</div><div class="case-metric-label">Admin Hrs</div></div>
+            <div class="case-metric"><div class="case-metric-val">$200K</div><div class="case-metric-label">Saved/Yr</div></div>
+            <div class="case-metric"><div class="case-metric-val">24/7</div><div class="case-metric-label">Runtime</div></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <h3>50-Truck Logistics Company</h3>
+          <p>AI operations agent handling dispatch, invoicing, and driver communications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-light" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What They Say</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-text">"BilMedia built agents that run our outreach — not a tool we had to learn. They do the work."</p>
+        <div class="test-author"><div class="test-avatar">GB</div><div><div class="test-name">George Brinkman</div><div class="test-role">CEO, Brinkman Consulting</div></div></div>
+      </div>
+      <div class="test-card">
+        <p class="test-text">"They told us what they couldn't automate before they took our money. That's rare."</p>
+        <div class="test-author"><div class="test-avatar">AK</div><div><div class="test-name">Andrew Kirby</div><div class="test-role">Digital Course Creator</div></div></div>
+      </div>
+      <div class="test-card">
+        <p class="test-text">"We got a process map for free — whether we hired them or not. We hired them."</p>
+        <div class="test-author"><div class="test-avatar">SD</div><div><div class="test-name">Stephen Dooley</div><div class="test-role">Co-Founder, Roamly</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Fraction of the Cost of a Full-Time Hire.</h2>
+      <p class="section-subtitle">One flat monthly fee. No hourly rates, no watching the clock.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-type">Pilot</div>
+        <div class="price-amount">Fixed</div>
+        <div class="price-period">One process, one agent</div>
+        <ul class="price-features">
+          <li>Free process map (yours to keep)</li>
+          <li>One agent built and shipped</li>
+          <li>2–4 weeks, fixed scope</li>
+          <li>Fee credited to first month</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-type">Fractional AI Team</div>
+        <div class="price-amount">$$</div>
+        <div class="price-period">Fraction of the cost of an in-house hire</div>
+        <ul class="price-features">
+          <li>Full team: strategy, engineering, ops</li>
+          <li>Agents built, run, monitored</li>
+          <li>Exceptions handled</li>
+          <li>You own the code. Cancel anytime.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
